@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+  FILE=test/test_helper.rb
+else
+  FILE=$@
+fi
+
+../dragonruby $(basename "$PWD") --test $FILE
+
