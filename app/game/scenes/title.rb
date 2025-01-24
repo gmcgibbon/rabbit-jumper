@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Game
   module Scenes
     class Title
-      BACKGROUND_COLOR = [255, 204, 170]
+      BACKGROUND_COLOR = [255, 204, 170].freeze
 
       class Text < Label
         def initialize
@@ -16,7 +18,6 @@ class Game
 
       def tick(args)
         args.outputs.background_color = BACKGROUND_COLOR
-        args.outputs.sprites << @background
         args.outputs.labels << @title
 
         start if args.inputs.keyboard.space || args.inputs.keyboard.enter

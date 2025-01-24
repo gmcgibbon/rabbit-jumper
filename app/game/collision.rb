@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Game
   module Collision
     def collide?(other)
@@ -13,7 +15,7 @@ class Game
     end
 
     def point
-      [@x + @w / 2, @y]
+      [@x + (@w / 2), @y]
     end
   end
 end

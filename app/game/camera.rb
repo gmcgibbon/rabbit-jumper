@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Game
   class Camera
     attr_accessor(:x, :y)

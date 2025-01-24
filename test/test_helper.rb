@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "app/game"
 
 MAIN = self
@@ -34,11 +36,9 @@ class Game
       @assert = assert
     end
 
-    def setup
-    end
+    def setup; end
 
-    def teardown
-    end
+    def teardown; end
 
     def run(test_name, args)
       setup
@@ -47,11 +47,11 @@ class Game
     end
 
     def public_send(method_name, *args)
-      if public_methods.include?(method_name.to_sym)
-        send(method_name, *args)
-      else
+      unless public_methods.include?(method_name.to_sym)
         raise NoMethodError, "private method #{method_name} called for #{self}."
       end
+
+      send(method_name, *args)
     end
 
     class << self
@@ -60,13 +60,13 @@ class Game
 
         define_method(:setup) do
           super_setup.bind(self).call
-          instance_exec &block
+          instance_exec(&block)
         end
       end
 
       def teardown(&block)
         define_method(:teardown) do
-          instance_exec &block
+          instance_exec(&block)
         end
       end
 

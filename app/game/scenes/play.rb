@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Game
   module Scenes
     class Play
-      BACKGROUND_COLOR = [255, 204, 170]
+      BACKGROUND_COLOR = [255, 204, 170].freeze
 
       def initialize(game)
         @game = game

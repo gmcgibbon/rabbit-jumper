@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Game
   class Player < Entity
     def initialize(x:, y:, size:, camera:)
@@ -16,11 +18,11 @@ class Game
     end
 
     def collide(entity)
-      if collide?(entity) && @dy <= 0
-        @y = entity.top
-        @dy = 0
-        @jump_tick = nil
-      end
+      return unless collide?(entity) && @dy <= 0
+
+      @y = entity.top
+      @dy = 0
+      @jump_tick = nil
     end
 
     def tick(args)
@@ -53,15 +55,15 @@ class Game
     end
 
     def animate
-      @animation = if @jump_tick || @dy < 0
-        1
-      elsif @crouch_tick
-        2
-      elsif !(-1..1).cover?(@dx)
-        @animation.frame_index(3, 8, true)
-      else
-        0
-      end
+      @animation = if @jump_tick || @dy.negative?
+                     1
+                   elsif @crouch_tick
+                     2
+                   elsif !(-1..1).cover?(@dx)
+                     @animation.frame_index(3, 8, true)
+                   else
+                     0
+                   end
       @sprite.path = "sprites/hero-red-#{@animation}.png"
     end
 
@@ -91,9 +93,9 @@ class Game
       @jump_tick ||= Kernel.tick_count
       duration = Kernel.tick_count - @jump_tick
 
-      if duration < @jump_duration
-        @dy = @jump_power
-      end
+      return unless duration < @jump_duration
+
+      @dy = @jump_power
     end
   end
 end

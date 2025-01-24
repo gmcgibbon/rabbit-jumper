@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test/test_helper"
 
 class Game
@@ -32,5 +34,3 @@ class Game
     end
   end
 end
-
-

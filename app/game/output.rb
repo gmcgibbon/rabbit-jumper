@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Game
   class Output
-    SERIALIZED_ATTRIBUTES = %i()
+    SERIALIZED_ATTRIBUTES = %i().freeze
 
     attr_reader :primitive_marker
 

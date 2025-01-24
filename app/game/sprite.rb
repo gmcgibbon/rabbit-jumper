@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Game
   class BasicSprite < Output
     attr_accessor :x, :y, :w, :h, :path, :angle, :a, :r, :g, :b, :tile_x,
@@ -17,7 +19,7 @@ class Game
   end
 
   class Sprite < BasicSprite
-    SERIALIZED_ATTRIBUTES = %i(x y w h path)
+    SERIALIZED_ATTRIBUTES = %i(x y w h path).freeze
 
     def initialize(x:, y:, size:, path:)
       super()

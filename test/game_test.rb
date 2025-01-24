@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test/test_helper"
 
 class GameTest < Game::TestCase
@@ -19,5 +21,3 @@ class GameTest < Game::TestCase
     assert.equal!(0, args.outputs.labels.count)
   end
 end
-
-

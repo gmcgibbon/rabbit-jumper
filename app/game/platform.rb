@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Game
   class Platform < Entity
     def initialize(x:, y:, size:, camera:)
